@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <string.h>
 
+
 static int num_dirs, num_regular;
 
 bool is_dir(const char* path) {
@@ -16,9 +17,22 @@ bool is_dir(const char* path) {
    * return value from stat in case there is a problem, e.g., maybe the
    * the file doesn't actually exist.
    */
+
+   struct stat buff;
+   stat(path, &buff);
+   int s;
+   s = S_ISDIR(buf.st_mode);
+   if(s == 0){
+     return true;
+   }else if(s == -1){
+     return false;
+   }
+
+
+
 }
 
-/* 
+/*
  * I needed this because the multiple recursion means there's no way to
  * order them so that the definitions all precede the cause.
  */
@@ -36,6 +50,14 @@ void process_directory(const char* path) {
    * with a matching call to chdir() to move back out of it when you're
    * done.
    */
+
+   //Declare struct dirent
+  // struct dirent *dir_data;
+  // DIR *dir
+
+
+
+
 }
 
 void process_file(const char* path) {
